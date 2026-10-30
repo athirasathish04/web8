@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="homeDecorApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S S ATHIRA - Home Decor Blog</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AngularJS Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="DecorController">
+
+    <!-- Header -->
+    <header>
+        <h1>S S ATHIRA</h1>
+        <p>Home Decor Ideas Blog</p>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Image Gallery -->
+        <section class="gallery-section">
+            <h2>Beautiful Home Decor Ideas</h2>
+
+            <div class="image-gallery">
+
+                <div class="image-card">
+                    <img src="./image/images.jpg" alt="Home Decor">
+                    <h3>Home Decor</h3>
+                </div>
+
+                <div class="image-card">
+                    <img src="./image/interior.jpg" alt="Interior Design">
+                    <h3>Interior Design</h3>
+                </div>
+
+                <div class="image-card">
+                    <img src="./image/bedroom.jpg" alt="Bedroom Design">
+                    <h3>Bedroom Design</h3>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Comment Section -->
+        <section class="content-section">
+
+            <h2>Comment Section</h2>
+
+            <p>Share your thoughts about our home decor ideas.</p>
+
+            <textarea
+                ng-model="newComment"
+                placeholder="Write your comment here..."
+                rows="4">
+            </textarea>
+
+            <button ng-click="postComment()">Post Comment</button>
+
+            <h3>Comments ({{comments.length}})</h3>
+
+            <div class="comment-box"
+                 ng-repeat="comment in comments track by $index">
+
+                <p>{{comment}}</p>
+
+            </div>
+
+            <p class="empty-message" ng-if="comments.length === 0">
+                No comments yet. Be the first to comment!
+            </p>
+
+        </section>
+
+        <!-- Dynamic Shopping List -->
+        <section class="content-section">
+
+            <h2>Home Decor Shopping List</h2>
+
+            <p>Add the items you need for your home.</p>
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    ng-model="newItem"
+                    placeholder="Enter an item">
+
+                <button ng-click="addItem()">Add Item</button>
+
+            </div>
+
+            <h3>Shopping Items ({{items.length}})</h3>
+
+            <ul>
+                <li ng-repeat="item in items track by $index">
+                    {{item}}
+                </li>
+            </ul>
+
+            <p class="empty-message" ng-if="items.length === 0">
+                Your shopping list is empty.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 S S ATHIRA | Home Decor Ideas Blog</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
